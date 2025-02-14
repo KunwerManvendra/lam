@@ -5,7 +5,7 @@ Resources:
     Properties:
       FunctionName: MyLambdaFunction
       Handler: lambda_function.lambda_handler
-      Role: arn:aws:iam::730335505228:user/github-lambda-deployer
+      Role: arn:aws:iam::730335505228:role/lambdafullacess
       Code:
         ZipFile: |
           import json
