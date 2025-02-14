@@ -26,6 +26,6 @@ jobs:
       - name: Deploy CloudFormation stack
         run: |
           aws cloudformation deploy \
-            --template-file $(pwd)/cloudformation-template.yaml \
+            --template-file $(pwd)/cloudformation.yaml \
             --stack-name my-lambda-stack \
             --capabilities CAPABILITY_IAM
