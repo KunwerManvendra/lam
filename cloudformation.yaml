@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  MyLambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: MyLambdaFunction
+      Handler: lambda_function.lambda_handler
+      Role: arn:aws:iam::YOUR_ACCOUNT_ID:role/LambdaExecutionRole
+      Code:
+        ZipFile: |
+          import json
+          import os
+
+          def lambda_handler(event, context):
+              print("Event received:", event)  # Debugging line
+              print("Context:", context)       # Debugging line
+              
+              # Check for missing values
+              value = event.get('key', 'default')  # Prevent 'NoneType' error
+              
+              return {
+                  'statusCode': 200,
+                  'body': json.dumps(f'Received value: {value}')
+              }
+      Runtime: python3.9
+      Timeout: 10
+      MemorySize: 128
